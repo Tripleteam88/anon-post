@@ -1,0 +1,23 @@
+{
+  "name": "anon-post",
+  "version": "1.0.0",
+  "description": "Desktop client for AnonPost",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonli0616/anon-post.git"
+  },
+  "author": "Jason Li",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jasonli0616/anon-post/issues"
+  },
+  "homepage": "https://github.com/jasonli0616/anon-post#readme",
+  "dependencies": {
+    "electron": "^13.1.2",
+    "electron-reload": "^1.5.0"
+  }
+}
