@@ -14,7 +14,9 @@ posts = []
 @app.route('/index.html')
 @app.route('/')
 def index():
-    return render_template("index.html", title="Home", session=session, posts=posts)
+    postsReverse = posts
+    postsReverse.reverse()
+    return render_template("index.html", title="Home", session=session, posts=postsReverse)
 
 @app.route('/user', methods=['GET'])
 def user():
