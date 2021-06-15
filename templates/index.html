@@ -27,16 +27,7 @@
 
 {% endfor %}
 
-<script>
-// UTC time to local time
-dateposted = document.getElementsByClassName("dateposted");
-for (i = 0; i < dateposted.length; i++) {
-    postDate = `${dateposted[i].innerHTML} GMT`
-    var date = new Date(postDate);
-    localPostDate = `${date.toDateString()} ${date.toLocaleTimeString()}`
-    dateposted[i].innerHTML = localPostDate
-}
-</script>
+<script src="{{ url_for('static', filename='index.js') }}"></script>
 
 {% if not posts %}
 <div class="alert alert-warning alert-dismissible fade show">
