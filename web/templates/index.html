@@ -1,3 +1,5 @@
+<!-- Homepage -->
+
 {% extends 'base.html' %}
 {% block content %}
 
@@ -7,12 +9,16 @@
 <h3 class="text-light">
     The anonymous social media network.
 </h3>
+
+
 {% if 'user' in session %}
+<!-- Show logged in as user if logged in -->
 <p class="text-light">
     You are logged in as {{ session['user'] }}.
 </p>
 {% endif %}
 
+<!-- Show all posts -->
 {% for post in posts %}
 
 <div class="card">
@@ -30,6 +36,7 @@
 <script src="{{ url_for('static', filename='index.js') }}"></script>
 
 {% if not posts %}
+<!-- If no posts -->
 <div class="alert alert-warning alert-dismissible fade show">
     There are no posts.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

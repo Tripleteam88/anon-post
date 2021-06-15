@@ -1,8 +1,12 @@
+<!-- Sign up page -->
+
 {% extends 'base.html' %}
 {% block content %}
 
 {% if confirmMsg %}
+    <!-- If sign up message -->
     {% if success %}
+        <!-- If sign up success message -->
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <h4 class="alert-heading">Success</h4>
             <hr>
@@ -10,6 +14,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% else %}
+    <!-- If sign up error message -->
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <h4 class="alert-heading">Error</h4>
             <hr>
@@ -21,6 +26,7 @@
 
 <h2 class="text-light">Sign up</h1>
 
+<!-- Sign up form -->
 <form action="#" method="POST">
     <div class="mb-3">
         <input type="text" class="form-control" name="username" placeholder="Username">

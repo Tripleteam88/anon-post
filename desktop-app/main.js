@@ -1,7 +1,7 @@
 const { app, BrowserWindow, Menu, screen } = require('electron');
 
+// Create window Electron boilerplate
 var win = null;
-
 function createWindow(url='https://anonpost.jasonli0616.repl.co') {
     const mainScreen = screen.getPrimaryDisplay();
     win = new BrowserWindow({
@@ -30,6 +30,7 @@ app.on('window-all-closed', function() {
 
 const isMac = (process.platform === 'darwin');
 
+// Menu bar
 Menu.setApplicationMenu(
     Menu.buildFromTemplate([
         // Menubar show App menu if on Mac
