@@ -5,5 +5,6 @@ This is a social media platform made in Flask. It is anonymous (no email require
 ## To do:
 
 - [ ] API to make posts
-- [ ] Use database instead of list to store data
+- [ ] Add comments :O
+- [x] Use database instead of list to store data
 - [x] Use client-side Javascript to change UTC time to local time
