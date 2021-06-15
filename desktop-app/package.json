@@ -1,23 +1,32 @@
 {
-  "name": "anon-post",
+  "name": "anonposts",
   "version": "1.0.0",
   "description": "Desktop client for AnonPost",
   "main": "main.js",
   "scripts": {
-    "test": "electron ."
+    "test": "electron .",
+    "pack": "electron-builder --dir",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jasonli0616/anon-post.git"
   },
   "author": "Jason Li",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jasonli0616/anon-post/issues"
   },
   "homepage": "https://github.com/jasonli0616/anon-post#readme",
-  "dependencies": {
+  "devDependencies": {
     "electron": "^13.1.2",
-    "electron-reload": "^1.5.0"
-  }
+    "electron-builder": "^22.11.7"
+  },
+  "build": {
+      "appId": "com.anonposts",
+      "productName": "AnonPosts",
+      "copyright": "Copyright © 2021 Jason Li"
+  },
+  "files": ["build/icon.*"]
 }
