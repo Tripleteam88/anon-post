@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="text-light">
+    Welcome to AnonPosts!
+</h1>
+<h3 class="text-light">
+    The anonymous social media network.
+</h3>
+{% if 'user' in session %}
+<p class="text-light">
+    You are logged in as {{ session['user'] }}.
+</p>
+{% endif %}
+
+{% for post in posts %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title text-light">{{ post.title }}<span class="card-title text-light" style="font-weight: 300;"> - Posted {{ post.datePosted }} by {{ post.author }}</span></h5>
+        <hr class="bg-light">
+      <p class="card-text text-light">{{ post.content }}</p>
+    </div>
+</div>
+<br>
+
+{% endfor %}
+
+{% if not posts %}
+<div class="alert alert-warning alert-dismissible fade show">
+    There are no posts.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+{% endblock content %}
