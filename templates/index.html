@@ -17,7 +17,8 @@
 
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title text-light">{{ post.title }}<span class="card-title text-light" style="font-weight: 300;"> - Posted {{ post.datePosted }} by {{ post.author }}</span></h5>
+        <h5 class="card-title text-light">{{ post.title }}</h5>
+        <h6 class="card-title text-light">Posted <span class="dateposted">{{ post.datePosted }}</span> by {{ post.author }}</h6>
         <hr class="bg-light">
       <p class="card-text text-light">{{ post.content }}</p>
     </div>
@@ -25,6 +26,17 @@
 <br>
 
 {% endfor %}
+
+<script>
+// UTC time to local time
+dateposted = document.getElementsByClassName("dateposted");
+for (i = 0; i < dateposted.length; i++) {
+    postDate = `${dateposted[i].innerHTML} GMT`
+    var date = new Date(postDate);
+    localPostDate = `${date.toDateString()} ${date.toLocaleTimeString()}`
+    dateposted[i].innerHTML = localPostDate
+}
+</script>
 
 {% if not posts %}
 <div class="alert alert-warning alert-dismissible fade show">
