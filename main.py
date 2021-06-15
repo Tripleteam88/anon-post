@@ -14,9 +14,7 @@ posts = []
 @app.route('/index.html')
 @app.route('/')
 def index():
-    postsReverse = posts
-    postsReverse.reverse()
-    return render_template("index.html", title="Home", session=session, posts=postsReverse)
+    return render_template("index.html", title="Home", session=session, posts=posts)
 
 @app.route('/user', methods=['GET'])
 def user():
@@ -37,7 +35,7 @@ def create():
         except KeyError:
             postauthor = session['user']
         post = Post(str(request.form['title']), postauthor, str(request.form['content']), (len(posts)+1))
-        posts.append(post)
+        posts.insert(0, post)
         return redirect(url_for('index'))
 
 @app.route('/login', methods=['GET', 'POST'])
