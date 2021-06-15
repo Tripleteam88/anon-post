@@ -1,9 +1,10 @@
 const { app, BrowserWindow, Menu, screen } = require('electron');
-require('electron-reload')(__dirname);
 
-function createWindow() {
-    const mainScreen = screen.getPrimaryDisplay()
-    const win = new BrowserWindow({
+var win = null;
+
+function createWindow(url='https://anonpost.jasonli0616.repl.co') {
+    const mainScreen = screen.getPrimaryDisplay();
+    win = new BrowserWindow({
         width: mainScreen.size.width,
         height: mainScreen.size.height,
         webPreferences: {
@@ -12,8 +13,7 @@ function createWindow() {
         },
     });
 
-    win.loadURL('https://anonpost.jasonli0616.repl.co');
-
+    win.loadURL(url);
 }
 
 app.whenReady().then(() => {
@@ -27,3 +27,53 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function() {
     if (process.platform !== 'darwin') { app.quit(); }
 });
+
+const isMac = (process.platform === 'darwin');
+
+Menu.setApplicationMenu(
+    Menu.buildFromTemplate([
+        // Menubar show App menu if on Mac
+        ...(isMac ? [
+            { role: 'appMenu' },
+        ] : []),
+        { role: 'fileMenu' },
+        { role: 'editMenu' },
+        {
+            label: 'User',
+            submenu: [
+                {
+                    label: 'Login',
+                    click: () => {
+                        win.destroy()
+                        createWindow('https://anonpost.jasonli0616.repl.co/login');
+                    },
+                },
+                {
+                    label: 'Sign up',
+                    click: () => {
+                        win.destroy()
+                        createWindow('https://anonpost.jasonli0616.repl.co/signup');
+                    },
+                },
+                { type: 'separator' },
+                {
+                    label: 'Create post',
+                    click: () => {
+                        win.destroy()
+                        createWindow('https://anonpost.jasonli0616.repl.co/create');
+                    },
+                },
+                { type: 'separator' },
+                {
+                    label: 'Signout',
+                    click: () => {
+                        win.destroy()
+                        createWindow('https://anonpost.jasonli0616.repl.co/logout');
+                    },
+                },
+            ],
+        },
+        { role: 'windowMenu' },
+
+    ])
+)
